@@ -2,6 +2,10 @@
 
 describe('Initial Page', () => {
   beforeEach(() => {
+    // run predefined NODE tasks
+    // foolowing task RESER could be found in plugins folder
+    // there is code which on "reset" task perfirm certain actions
+    cy.task('reset');
     cy.visit('/echo-chamber');
   });
 
@@ -18,7 +22,10 @@ describe('Initial Page', () => {
     cy.location('pathname').should('contain.text', '/echo-chamber/sign-in');
   });
 
-  it('should navigate to "/sign-up" when you click the "Sign Up" button', () => {});
+  it('should navigate to "/sign-up" when you click the "Sign Up" button', () => {
+    cy.get('[data-test="sign-up"]').click();
+    cy.location('pathname').should('contain', 'sign-up');
+  });
 });
 
 describe('Sign Up', () => {
