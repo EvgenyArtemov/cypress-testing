@@ -28,7 +28,7 @@ describe('Sign Up', () => {
     
     cy.get('@email')
       .invoke('prop', 'validationMessage')
-      .should('contain', 'Please inclide an "@" in the email')
+      .should('contain', "is missing an '@'")
     
     cy.get('[data-test="sign-up-email"]:invalid')
       .invoke('prop', 'validity')
@@ -43,7 +43,7 @@ describe('Sign Up', () => {
     
     cy.get('[data-test="sign-up-password"]:invalid')
       .invoke('prop', 'validity')
-      .its('valuemissing')
+      .its('valueMissing')
       .should('be.true');
   });
 });
