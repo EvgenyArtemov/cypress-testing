@@ -18,11 +18,20 @@ describe('Dog Facts', () => {
 
   it('should make a request when the button is called', () => {});
 
-  it('should adjust the amount when the select is changed', () => {});
+  it('should adjust the amount when the select is changed', () => {
+    cy.get('@amountSelect').select('4');
+    cy.get('@fetchButton').click();
+    cy.wait('@api').its('request.url').should('contain', 'amount=4')
+  });
 
   it('should show the correct number of facts on the page', () => {});
 
-  it('should clear the facts when the "Clear" button is pressed', () => {});
+  it('should clear the facts when the "Clear" button is pressed', () => {
+    cy.get('@amountSelect').select('6');
+    cy.get('@fetchButton').click();
+    cy.get('@clearButton').click();
+    cy.get('@emptyState');
+  });
 
   it("should reflect the number of facts we're looking for in the title", () => {});
 });
